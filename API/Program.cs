@@ -1,3 +1,4 @@
+using API.Middleware;
 using Core.Interfaces;
 using Infrastructure;
 using Infrastructure.Data;
@@ -21,6 +22,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionMiddleware>();
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
