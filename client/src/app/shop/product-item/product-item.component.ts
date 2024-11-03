@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/shared/models/product';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-item',
@@ -8,5 +9,10 @@ import { Product } from 'src/app/shared/models/product';
 })
 export class ProductItemComponent {
   @Input() product?: Product;
+
+  formatPrice(price: number): string {
+    return price.toLocaleString('fa-IR'); // استفاده از فرمت فارسی
+}
+
 
 }
