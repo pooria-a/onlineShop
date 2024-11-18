@@ -1,0 +1,22 @@
+<div class="bg-light px-4 py-3 texr-uppercase fw-bold">
+    خلاصه سفارش
+</div>
+
+<div class="p4">
+    <p class="fst-italic mb-4">هزینه حمل و نقل کالا در اخر اضافه خواهد شد.</p>
+    <ul class="list-unstyled mb-4"*ngIf="(basketService.basketTotalSource$ | async) as totals">
+        <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted">سفارش</strong>
+            <strong > {{totals.subtotal}}ریال </strong>
+        </li>
+        <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted">حمل و نقل</strong>
+            <strong > {{totals.shipping}}ریال </strong>
+        </li>
+        <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted">تمام هزینه ها</strong>
+            <strong > {{totals.total}}ریال </strong>
+        </li>
+    </ul>
+
+</div>

@@ -1,21 +1,54 @@
-<div class="row" *ngIf="product">
-    <div class="col-6">
-        <img src="{{product.pictureUrl}}" alt="product.name" class="w-100">
-    </div>
-    <div class="col-6 mt-5">
-        <h2>{{product.name}}</h2>
-        <p>{{product.price | currency}}</p>
-        <div class="d-flex justify-content-start align-items-center">
-            <i class="class fa fa-minus-circle text-warning me-2" style=" cursor: pointer; font-size: 2em;"></i>
-            <span class="font-weight-bold" style="font-size: 1.5em;">2</span>
-            <i class="class fa fa-plus-circle text-warning ms-2" style=" cursor: pointer; font-size: 2em;"></i>
-            <button class=" btn btn-outline-secondary ms-4">افزودن به سبد خرید</button>
+<html dir="rtl" >
+    <div class="container">
+        <div class="row" *ngIf="product">
+            <div class="col-6">
+                <img src="{{product.pictureUrl}}" alt="product.name" class="w-100">
+            </div>
+            <div class="col-6 mt-5">
+                <h2>{{product.name}}</h2>
+                <p>{{product.price }} ریال</p>
 
-        </div>
-        <div class="row mt-4">
-            <h4>توضیحات</h4>
-            <p>{{product.description}}</p>
+
+                <h5 class="text-primary mb-3"*ngIf="quantityInBasket > 0">
+                    تعداد {{quantityInBasket}} عدد از این کالا در سبد خرید شما وجود دارد.
+                </h5>
+                
+                
+
+                <div class="d-flex justify-content-start align-items-center">
+                    <i
+                     (click)="decrementQuantity()"
+                    class="class fa fa-minus-circle text-warning me-2" 
+                    style=" cursor: pointer; font-size: 2em;"></i>
+                    <span class="font-weight-bold" style="font-size: 1.5em;">
+                        {{quantity}}
+                    </span>
+                    <i 
+                    (click)="incrementQuantity()"
+                    class="class fa fa-plus-circle text-warning ms-2" style=" cursor: pointer; font-size: 2em;"></i>
+                    <button 
+                    class=" btn btn-outline-primary ms-4"
+                    (click)="updateBasket()"
+                    [disabled]="quantity === quantityInBasket"
+                    >بروزرسانی سبد خرید</button>
+        
+                </div> 
+                <div class="row mt-4">
+                    <h4>توضیحات</h4> 
+                    <p>{{product.description}}</p>
+                </div>
+            
+            </div>
         </div>
     
     </div>
-</div>
+    
+    
+
+
+
+
+
+
+
+</html>

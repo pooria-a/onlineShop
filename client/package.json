@@ -21,6 +21,7 @@
     "add": "^2.0.6",
     "bootstrap": "^5.2.3",
     "bootswatch": "^5.3.3",
+    "cuid": "^3.0.0",
     "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^10.3.0",
     "ngx-spinner": "^17.0.0",

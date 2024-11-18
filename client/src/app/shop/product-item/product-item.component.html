@@ -1,6 +1,13 @@
 
 <div class="card h-100 shadow-sm" *ngIf="product">
  <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="img-fluid bg-info">
+ <div class="d-flex align-items-center justify-content-center hoverlay">
+    <button (click)="addItemToBasket()" class="btn btn-primary fa fa-shopping-cart me-2"></button>
+    <button routerLink="/shop/{{product.id}}" class="btn btn-outline-secondary ">نمایش</button>
+
+
+ </div>
+ 
     
     <div class="card-body d-flex flex-column">
         <a href="" class="text-decoration-none">
@@ -15,9 +22,5 @@
 
 
         
-   <div class="btn-group mt-auto">
-    <button routerLink="/shop/{{product.id}}" class="btn btn-outline-secondary ">نمایش</button>
-    <button  class="btn btn-outline-secondary fa fa-shopping-cart me-2">۱۲۳</button>
-
-   </div>
+   
 </div>
