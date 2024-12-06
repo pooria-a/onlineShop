@@ -72,30 +72,35 @@ namespace API.Controllers
 
         }
 
-        [Authorize]
+        
         [HttpPost("login")]
-        public async Task<ActionResult<UserDto>>Login(LoginDto loginDto)
+        public async Task<ActionResult<UserDto>>Login(string email,string password,LoginDto loginDto)
         {
-            var user = await _userManager.FindByEmailAsync(loginDto.Email);
+           var user = await _userManager.FindByEmailAsync(loginDto.Email);
+           // var userr = await _userManager.FindByEmailAsync(email) != null;
 
-            if(user == null) return Unauthorized(new ApiResponse(401));
+        //    // if(user == null) return Unauthorized(new ApiResponse(401));
             
-            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password,
-            false);
+        //     var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password,
+        //     false);
 
-            if(!result.Succeeded) return Unauthorized(new ApiResponse(401));
+        //     if(!result.Succeeded) return Unauthorized(new ApiResponse(401));
 
-            return new UserDto
-            {
-                Email = user.Email,
+             return new UserDto
+             {
+                 Email = loginDto.Email,
                 Token = _tokenService.CreateToken(user),
                 DisplayName = user.DisplayName
-            };
+             };
 
         }
             [HttpPost("register")]
             public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
             {
+                if(CheckEmailExistsAsync(registerDto.Email).Result.Value)
+                {
+                    return new BadRequestObjectResult(new ApiValidationErrorResponse{Errors = new []{"Email address is in use"}});
+                }
                 var user = new AppUser
                 {
                     DisplayName = registerDto.DisplayName,
