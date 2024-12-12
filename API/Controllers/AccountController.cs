@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using API.Dtos;
@@ -13,6 +14,7 @@ using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.ObjectPool;
 
 namespace API.Controllers
 {
@@ -71,7 +73,7 @@ namespace API.Controllers
             return BadRequest("problem updating user");
 
         }
-
+        
         
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>>Login(string email,string password,LoginDto loginDto)
@@ -79,12 +81,12 @@ namespace API.Controllers
            var user = await _userManager.FindByEmailAsync(loginDto.Email);
            // var userr = await _userManager.FindByEmailAsync(email) != null;
 
-        //    // if(user == null) return Unauthorized(new ApiResponse(401));
+           if(user == null) return Unauthorized(new ApiResponse(401));
             
-        //     var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password,
-        //     false);
+             var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password,
+             false);
 
-        //     if(!result.Succeeded) return Unauthorized(new ApiResponse(401));
+             if(!result.Succeeded) return Unauthorized(new ApiResponse(401));
 
              return new UserDto
              {
@@ -99,7 +101,7 @@ namespace API.Controllers
             {
                 if(CheckEmailExistsAsync(registerDto.Email).Result.Value)
                 {
-                    return new BadRequestObjectResult(new ApiValidationErrorResponse{Errors = new []{"Email address is in use"}});
+                    return new BadRequestObjectResult(new ApiValidationErrorResponse{Errors = new []{"آدرس ایمیل تکراری می باشد"}});
                 }
                 var user = new AppUser
                 {

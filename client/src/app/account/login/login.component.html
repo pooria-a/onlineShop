@@ -1,0 +1,21 @@
+<html dir="rtl">
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-3">
+        <form [formGroup]="loginForm"(ngSubmit)="onSubmit()">
+            <div class="text-center mb-4">
+                <h1 class="mb-3">ورود</h1>
+            </div>
+            
+              <app-text-input class [formControl]="loginForm.controls['email']" [label]="'آدرس ایمیل'"></app-text-input>
+              <app-text-input [formControl]="loginForm.controls['password']" [label]="'رمز عبور'" [type]="'password'"></app-text-input>
+            
+              
+              <div class="d-grid">
+                <button [disabled]="loginForm.invalid" class="btn btn-lg btn-primary mt-2" type="submit">ورود</button>
+              </div>
+        </form>
+    </div>
+
+    
+</div>
+</html>
