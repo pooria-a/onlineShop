@@ -1,0 +1,40 @@
+<div class="mt-4" *ngIf="checkoutForm" [formGroup]="checkoutForm">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4>Shipping address</h4>
+        <button class="btn btn-outline-success mb-3"
+            (click)="saveUserAddress()"
+            
+        >
+            ذخیره به عنوان آدرس پیش فرض
+        </button>
+    </div>
+    <div class="row" formGroupName="addressForm">
+        <div class="form-group col-6">
+            <app-text-input [label]="'نام'" formControlName="firstName"></app-text-input>
+        </div>
+        <div class="form-group col-6">
+            <app-text-input [label]="'نام خانوادگی'" formControlName="lastName"></app-text-input>
+        </div>
+        <div class="form-group col-6">
+            <app-text-input [label]="'خیابان'" formControlName="street"></app-text-input>
+        </div>
+        <div class="form-group col-6">
+            <app-text-input [label]="'شهر'" formControlName="city"></app-text-input>
+        </div>
+        <div class="form-group col-6">
+            <app-text-input [label]="'استان'" formControlName="state"></app-text-input>
+        </div>
+        <div class="form-group col-6">
+        </div>
+    </div>
+</div>
+
+
+<div class="d-flex justify-content-between flex-row mb-5">
+    <button class="btn btn-outline-primary" routerLink="/basket">
+        <i class="fa fa-angle-right"></i> برو به سبد خرید
+    </button>
+    <button  class="btn btn-primary" cdkStepperNext>
+        برو به برسی نهایی <i class="fa fa-angle-left"></i> 
+    </button>
+</div>

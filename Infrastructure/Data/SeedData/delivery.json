@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "ShortName": "UPS1",
+    "Description": "سریع ترین زمان",
+    "DeliveryTime": "1-2 روز کاری",
+    "Price": 100
+  },
+  {
+    "Id": 2,
+    "ShortName": "UPS2",
+    "Description": "ارسال در ۵ روز کاری آینده",
+    "DeliveryTime": "2-5 روز",
+    "Price": 50
+  },
+  {
+    "Id": 3,
+    "ShortName": "UPS3",
+    "Description": "ارسال در ۱۰ روز کاری آینده",
+    "DeliveryTime": "5-10 Days",
+    "Price": 20
+  },
+  {
+    "Id": 4,
+    "ShortName": "ارسال رایگان",
+    "Description": "ارسال رایگان",
+    "DeliveryTime": "1-2 هفته",
+    "Price": 0
+  }
+]

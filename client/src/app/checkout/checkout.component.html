@@ -1,4 +1,26 @@
+<html dir="rtl">
 <div class="container mt-5">
-    <h1>فقط افراد تایید هوییت شده میتوانند این را ببینند</h1>
+    <div class="row">
+        <div class="col-8">
+            <app-stepper [linearModeSelected]="false" #appStepper>
+                <cdk-step [label]="'آدرس'" >
+                    <app-checkout-address [checkoutForm]="checkoutForm"></app-checkout-address>
+                </cdk-step>
+                <cdk-step [label]="'برسی نهایی'">
+                    <app-checkout-review [appStepper]="appStepper"></app-checkout-review>
+                </cdk-step>
+                <cdk-step [label]="'پرداخت'">
+                    <app-checkout-payment [checkoutForm]="checkoutForm"></app-checkout-payment>
+                </cdk-step>
+            </app-stepper>
+        </div>
+        <div class="col-4">
+
+            <app-order-totals></app-order-totals>
+            
+ 
+        </div>
+    </div>
 </div>
 
+</html>
